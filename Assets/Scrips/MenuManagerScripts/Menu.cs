@@ -27,7 +27,7 @@ public abstract class Menu<T> : Menu where T : Menu<T>
         protected static void Close() { 
             if
 
-jkhbzasjkdajksndjks
+
 
     }
     public override void OnBackPressed()
