@@ -7,7 +7,7 @@ public abstract class Menu<T> : Menu where T : Menu<T>
 
     protected virtual void Awake()
     {
-        Instance = (T)This;
+        Instance = (T)this;
     }
 
     protected virtual void OnDestroy() {
@@ -21,15 +21,19 @@ public abstract class Menu<T> : Menu where T : Menu<T>
         if (Instance == null)
             MenuManager.Instance.CreateInstance<T>();
         else
-            Instance.gameObject.setActive(true);
+            Instance.gameObject.SetActive(true);
         MenuManager.Instance.OpenMenu(Instance);
-
-        protected static void Close() { 
-            if
-
-
-
     }
+
+    protected static void Close() {
+        if (Instance == null)
+        {
+            Debug.LogErrorFormat("Trying to close menu {0} but Instance is null", typeof(T));
+            return;
+        }
+        MenuManager.Instance.CloseMenu(Instance);
+    }
+
     public override void OnBackPressed()
     {   
         Close();
