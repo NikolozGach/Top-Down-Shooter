@@ -7,7 +7,4 @@ public class MainMenu : SimpleMenu<MainMenu>
         Hide();
         Time.timeScale = 1;
     }
-     
-    
-    
 }

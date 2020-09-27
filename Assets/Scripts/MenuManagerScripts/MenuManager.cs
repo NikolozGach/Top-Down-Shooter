@@ -6,12 +6,7 @@ using System.Reflection;
 public class MenuManager : MonoBehaviour
 {
 
-
-
-
-
-   
-    //public MainMenu m_mainmenuPrefab;
+    public MainMenu m_mainmenuPrefab;
 
     private Stack<Menu> m_menuStack = new Stack<Menu>();
 
@@ -20,13 +15,20 @@ public class MenuManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        MainMenu.Show();
     }
+    
+    private void OnDestroy()
+    {
+        Instance = null;
+    }
+
     public void CreateInstance<T>() where T : Menu
     {
         var prefab = GetPrefab<T>();
-
-   
     }
+    
     public void OpenMenu(Menu a_instance)
     {
         if (m_menuStack.Count > 0)
