@@ -16,7 +16,7 @@ public class ZombieStateMachine : MonoBehaviour
 
     private void Start()
     {
-        
+        FindNewRandomWaypoint();
     }
 
     private void Update() {
@@ -53,7 +53,7 @@ public class ZombieStateMachine : MonoBehaviour
 
     private bool HasReachedWaypoint()
     {
-        if (Vector3.Distance(gameObject.GetComponent<NavMeshAgent>().destination, gameObject.transform.position) <= 0.1f)
+        if (Vector3.Distance(gameObject.GetComponent<NavMeshAgent>().destination, gameObject.transform.position) <= 0.2f)
         {
             return true;
         }
@@ -62,7 +62,7 @@ public class ZombieStateMachine : MonoBehaviour
 
     private void FindNewRandomWaypoint()
     {
-        Vector3 random_pos = UnityEngine.Random.insideUnitySphere * 10;
+        Vector3 random_pos = UnityEngine.Random.insideUnitSphere * 10;
 
         FindPathToTarget(random_pos);
     }
